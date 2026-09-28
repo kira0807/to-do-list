@@ -1,0 +1,106 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f2f7;
+  margin: 0;
+  padding: 20px;
+}
+
+.box {
+  max-width: 420px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.add-form {
+  display: flex;
+  gap: 8px;
+}
+
+.add-form input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.add-form button {
+  padding: 10px 16px;
+  background: #6c5ce7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 0.9rem;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin: 16px 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 4px;
+  border-bottom: 1px solid #eee;
+}
+
+.title-link {
+  text-decoration: none;
+  color: #333;
+  flex: 1;
+}
+
+.task-list li.done .title-link {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.delete-link {
+  text-decoration: none;
+  color: #e74c3c;
+  padding: 4px 8px;
+}
+
+.empty {
+  text-align: center;
+  color: #999;
+}
+
+.clear-btn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* mobile */
+@media (max-width: 480px) {
+  .add-form { flex-direction: column; }
+}

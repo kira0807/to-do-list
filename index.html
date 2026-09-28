@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Easy Task Manager</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="box">
+
+    <h1>📝 Easy Task Manager</h1>
+
+    <!-- ADD TASK FORM -->
+    <form action="/add" method="POST" class="add-form">
+      <input type="text" name="title" placeholder="Type a task..." maxlength="100">
+      <button type="submit">Add</button>
+    </form>
+
+    <!-- ERROR MESSAGE (only shows if there is one) -->
+    {% if error %}
+      <p class="error">⚠️ {{ error }}</p>
+    {% endif %}
+
+    <!-- STATS -->
+    <div class="stats">
+      <span>Total: <b>{{ total }}</b></span>
+      <span>Completed: <b>{{ done_count }}</b></span>
+      <span>Pending: <b>{{ pending_count }}</b></span>
+    </div>
+
+    <!-- TASK LIST -->
+    <ul class="task-list">
+      {% for task in tasks %}
+        <li class="{{ 'done' if task.done else '' }}">
+
+          <!-- click title to toggle done/not done -->
+          <a href="/toggle/{{ task.id }}" class="title-link">
+            {% if task.done %}✅{% else %}⬜{% endif %}
+            {{ task.title }}
+          </a>
+
+          <a href="/delete/{{ task.id }}" class="delete-link">✕</a>
+        </li>
+      {% else %}
+        <p class="empty">No tasks yet. Add one above!</p>
+      {% endfor %}
+    </ul>
+
+    <!-- CLEAR ALL (plain JS confirm, one line) -->
+    {% if tasks %}
+      <form action="/clear" method="GET"
+            onsubmit="return confirm('Delete ALL tasks? This cannot be undone.');">
+        <button type="submit" class="clear-btn">Clear All</button>
+      </form>
+    {% endif %}
+
+  </div>
+</body>
+</html>
